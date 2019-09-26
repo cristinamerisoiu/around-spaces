@@ -27,6 +27,13 @@ export default function Home({ history, location, toggleTheme }) {
     rating: params.get("rating") || ""
   });
 
+  React.useEffect(() => {
+    postAnalytics({
+      selectedFilters: filters,
+      time: Date.now()
+    });
+  });
+
   function handleFilterChange(name, value) {
     const newFilters = { ...filters };
     params.delete(name);
